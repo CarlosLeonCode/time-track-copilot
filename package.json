@@ -1,0 +1,42 @@
+{
+  "name": "time-track-copilot",
+  "productName": "time-track-copilot",
+  "version": "1.0.0",
+  "description": "Time tracking application for improving productivity and focus.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "concurrently \"npm:watch:css\" \"electron-forge start\"",
+    "package": "npm run build:css && electron-forge package",
+    "make": "npm run build:css && electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "echo \"No linting configured\"",
+    "build:css": "tailwindcss -i ./src/style.css -o ./src/output.css --minify",
+    "watch:css": "tailwindcss -i ./src/style.css -o ./src/output.css --watch"
+  },
+  "keywords": [],
+  "author": {
+    "name": "CarlosLeonCode",
+    "email": "carlosleoncode@gmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "active-win": "^8.2.1"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^7.8.1",
+    "@electron-forge/maker-deb": "^7.8.1",
+    "@electron-forge/maker-rpm": "^7.8.1",
+    "@electron-forge/maker-squirrel": "^7.8.1",
+    "@electron-forge/maker-zip": "^7.8.1",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.8.1",
+    "@electron-forge/plugin-fuses": "^7.8.1",
+    "@electron-forge/plugin-webpack": "^0.0.2",
+    "@electron/fuses": "^1.8.0",
+    "@tailwindcss/postcss": "^4.1.10",
+    "autoprefixer": "^10.4.21",
+    "concurrently": "^9.1.2",
+    "electron": "36.4.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17"
+  }
+}

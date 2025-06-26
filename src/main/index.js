@@ -17,17 +17,33 @@ import('active-win').then((module) => {
 });
 
 const createWindow = () => {
+  // Fallback for webpack constants when they're not properly injected
+  const preloadPath = typeof MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY !== 'undefined' 
+    ? MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY 
+    : path.join(__dirname, 'preload.js');
+  
+  const appURL = typeof MAIN_WINDOW_WEBPACK_ENTRY !== 'undefined'
+    ? MAIN_WINDOW_WEBPACK_ENTRY
+    : path.join(__dirname, '../renderer/index.html');
+
   mainWindow = new BrowserWindow({
     width: 900,
     height: 700,
     frame: false,
     titleBarStyle: 'hidden',
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js'),
+      preload: preloadPath,
+      nodeIntegration: false,
+      contextIsolation: true,
     },
   });
 
-  mainWindow.loadFile(path.join(__dirname, 'index.html'));
+  // Check if appURL is a file path or URL
+  if (appURL.startsWith('http')) {
+    mainWindow.loadURL(appURL);
+  } else {
+    mainWindow.loadFile(appURL);
+  }
   
   // IPC LISTENERS FOR WINDOW CONTROLS
   ipcMain.on('minimize-window', () => mainWindow.minimize());

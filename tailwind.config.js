@@ -2,7 +2,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./src/**/*.{html,js}", // <-- This line is CRITICAL.
+    "./src/renderer/**/*.{html,js}",
   ],
   theme: {
     extend: {},

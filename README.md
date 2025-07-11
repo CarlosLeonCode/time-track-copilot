@@ -2,6 +2,7 @@
 
 **TimeTrack** is a free, lightweight desktop app that helps you track your time effortlessly, stay focused, and improve your productivity — all from your local machine.
 
+<img width="892" height="691" alt="image" src="https://github.com/user-attachments/assets/5ea096f2-809a-4be8-b1cf-3f2542e80636" />
 ---
 
 ## ✨ Features
